@@ -6,7 +6,9 @@ stage('scm checkout'){
 steps
 {
 git branch:"master",git:"https://github.com/santoshdeshmane06/pipelinerepo.git"
-stage('buil && sonarqube analysis'){
+}
+}
+stage('build && sonarqube analysis'){
 steps{
 withSonarQubeEnv(credentialsId: 'sonarQubeNew') {
     // some block
@@ -14,8 +16,6 @@ withSonarQubeEnv(credentialsId: 'sonarQubeNew') {
 withMaven(jdk: 'localjdk-1.8', maven: 'localmaven')
 {
 sh 'clean mvn install sonar:sonar'
-}
-}
 }
 }
 }
