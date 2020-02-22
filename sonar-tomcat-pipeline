@@ -1,0 +1,26 @@
+pipeline
+{
+	agent any
+	stages
+	{
+		stage('scm checkout')
+		{
+			steps
+				{
+					git branch:'master', url:'https://github.com/santoshdeshmane06/pipelinerepo.git'
+				}
+		}
+		stage('build && sonarqube analysis')
+		{
+			steps
+			{
+				sshagent(['CICD']) 
+				{
+						sh 'scp -o StrictHostKeyChecking=no */target/*.war ec2user@172.31.28.103:/usr/share/tomcat/webapp/'
+				}
+					
+			}
+		}
+
+	}
+}
