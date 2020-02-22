@@ -10,7 +10,7 @@ git branch:'master', url:'https://github.com/santoshdeshmane06/pipelinerepo.git'
 }
 stage('build && sonarqube analysis'){
 steps{
-withSonarQubeEnv('sonarQubeNew  ') {
+withSonarQubeEnv('sonarQubeNew') {
 
 withMaven(jdk:'localjdk-1.8', maven:'localmaven')
 {
