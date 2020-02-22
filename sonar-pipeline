@@ -14,7 +14,7 @@ withSonarQubeEnv('sonarQubeNew') {
 
 withMaven(jdk:'localjdk-1.8', maven:'localmaven')
 {
-sh 'clean mvn clean package sonar:sonar'
+sh 'mvn clean package sonar:sonar'
 }
 }
 }
